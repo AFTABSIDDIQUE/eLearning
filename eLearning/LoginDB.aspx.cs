@@ -35,22 +35,35 @@ namespace eLearning
                     Session["Users"] = em;
                     Session["email"] = rdr["UserEmail"];
                     Session["Usersid"] = rdr["UserId"];
-                    if ((rdr["UserEmail"].Equals(em) || rdr["UserName"].Equals(em)) && rdr["UserPassword"].Equals(pass))
+                    DateTime lastLogin = DateTime.Parse(rdr["LastLogin"].ToString());
+                    DateTime check = lastLogin.AddDays(2);
+                    if (check <= lastLogin )
                     {
-                        if (rdr["role"].Equals("Admin"))
+                        if ((rdr["UserEmail"].Equals(em) || rdr["UserName"].Equals(em)) && rdr["UserPassword"].Equals(pass))
                         {
-                            Response.Redirect("/Admin/AdminHome.aspx");
-                        }
-                        else if (rdr["role"].Equals("User"))
-                        {
-                            Response.Redirect("/User/UserHome.aspx");
-                        }
-                        else
-                        {
-                            Response.Write("404 User Not found");
-                        }
+                            if (rdr["role"].Equals("Admin"))
+                            {
+                                Response.Redirect("/Admin/AdminHome.aspx");
+                            }
+                            else if (rdr["role"].Equals("User"))
+                            {
+                                Response.Redirect("/User/UserHome.aspx");
+                            }
+                            else
+                            {
+                                Response.Write("404 User Not found");
+                            }
 
+                        }
                     }
+                    else
+                    {
+                          Response.Write("<script>alert('Your Account is Inactive, Please Contact Admin');</script>");
+                        string qu = $"update Users set stat='Inactive' where UserId='{id}'";
+                        SqlCommand cm = new SqlCommand(qu, conn);
+                        cm.ExecuteNonQuery();
+                    }
+
 
                 }
             }
