@@ -37,7 +37,10 @@ namespace eLearning
                     Session["Usersid"] = rdr["UserId"];
                     DateTime lastLogin = DateTime.Parse(rdr["LastLogin"].ToString());
                     DateTime check = lastLogin.AddDays(2);
-                    if (check <= lastLogin )
+                    TimeSpan diff = DateTime.Now - lastLogin;
+                    int daysDifference = diff.Days;
+                    //DateTime check = DateTime.Now;
+                    if (daysDifference <= 2)
                     {
                         if ((rdr["UserEmail"].Equals(em) || rdr["UserName"].Equals(em)) && rdr["UserPassword"].Equals(pass))
                         {
@@ -55,10 +58,11 @@ namespace eLearning
                             }
 
                         }
+                        
                     }
                     else
                     {
-                          Response.Write("<script>alert('Your Account is Inactive, Please Contact Admin');</script>");
+                        Response.Write("<script>alert('Your Account is Inactive, Please Contact Admin');</script>");
                         string qu = $"update Users set stat='Inactive' where UserId='{id}'";
                         SqlCommand cm = new SqlCommand(qu, conn);
                         cm.ExecuteNonQuery();
