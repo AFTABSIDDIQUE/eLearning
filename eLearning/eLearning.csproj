@@ -70,12 +70,29 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Admin\AddMaterial\AddAssignment.aspx" />
+    <Content Include="Admin\AddMaterial\AddMCQ.aspx" />
     <Content Include="Admin\AdminHome.aspx" />
     <Content Include="LoginDB.aspx" />
+    <Content Include="User\UserDashboard.aspx" />
     <Content Include="User\UserHome.aspx" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Admin\AddMaterial\AddAssignment.aspx.cs">
+      <DependentUpon>AddAssignment.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Admin\AddMaterial\AddAssignment.aspx.designer.cs">
+      <DependentUpon>AddAssignment.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Admin\AddMaterial\AddMCQ.aspx.cs">
+      <DependentUpon>AddMCQ.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Admin\AddMaterial\AddMCQ.aspx.designer.cs">
+      <DependentUpon>AddMCQ.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Admin\Admin.Master.cs">
       <DependentUpon>Admin.Master</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -105,6 +122,13 @@
     <Compile Include="User\User.Master.designer.cs">
       <DependentUpon>User.Master</DependentUpon>
     </Compile>
+    <Compile Include="User\UserDashboard.aspx.cs">
+      <DependentUpon>UserDashboard.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="User\UserDashboard.aspx.designer.cs">
+      <DependentUpon>UserDashboard.aspx</DependentUpon>
+    </Compile>
     <Compile Include="User\UserHome.aspx.cs">
       <DependentUpon>UserHome.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -123,6 +147,9 @@
     <None Include="Web.Release.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Upload\" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
