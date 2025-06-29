@@ -83,15 +83,19 @@
     <Content Include="Admin\Master Course\AddNewCourse.aspx" />
     <Content Include="Admin\Master Course\AddSubcourse.aspx" />
     <Content Include="Admin\Master Course\AddTopic.aspx" />
+    <Content Include="Admin\MasterSubscription\AddSubscription.aspx" />
+    <Content Include="Admin\MasterSubscription\SubscriptionType.aspx" />
     <Content Include="Admin\UserList.aspx" />
     <Content Include="LoginDB.aspx" />
     <Content Include="User\CoursesList\Checkout.aspx" />
     <Content Include="User\CoursesList\ViewCart.aspx" />
     <Content Include="User\CoursesList\ViewCoursesList.aspx" />
+    <Content Include="User\SubscriptionList\SubscriptionList.aspx" />
     <Content Include="User\UserDashboard.aspx" />
     <Content Include="User\UserHome.aspx" />
     <Content Include="User\UserProfile.aspx" />
     <Content Include="Web.config" />
+    <Content Include="Welcome.aspx" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Admin\AddMaterial\AddAssignment.aspx.cs">
@@ -171,6 +175,20 @@
     <Compile Include="Admin\Master Course\AddTopic.aspx.designer.cs">
       <DependentUpon>AddTopic.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Admin\MasterSubscription\AddSubscription.aspx.cs">
+      <DependentUpon>AddSubscription.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Admin\MasterSubscription\AddSubscription.aspx.designer.cs">
+      <DependentUpon>AddSubscription.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Admin\MasterSubscription\SubscriptionType.aspx.cs">
+      <DependentUpon>SubscriptionType.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Admin\MasterSubscription\SubscriptionType.aspx.designer.cs">
+      <DependentUpon>SubscriptionType.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Admin\UserList.aspx.cs">
       <DependentUpon>UserList.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -207,6 +225,13 @@
     <Compile Include="User\CoursesList\ViewCoursesList.aspx.designer.cs">
       <DependentUpon>ViewCoursesList.aspx</DependentUpon>
     </Compile>
+    <Compile Include="User\SubscriptionList\SubscriptionList.aspx.cs">
+      <DependentUpon>SubscriptionList.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="User\SubscriptionList\SubscriptionList.aspx.designer.cs">
+      <DependentUpon>SubscriptionList.aspx</DependentUpon>
+    </Compile>
     <Compile Include="User\User.Master.cs">
       <DependentUpon>User.Master</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -234,6 +259,13 @@
     </Compile>
     <Compile Include="User\UserProfile.aspx.designer.cs">
       <DependentUpon>UserProfile.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Welcome.aspx.cs">
+      <DependentUpon>Welcome.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Welcome.aspx.designer.cs">
+      <DependentUpon>Welcome.aspx</DependentUpon>
     </Compile>
   </ItemGroup>
   <ItemGroup>
