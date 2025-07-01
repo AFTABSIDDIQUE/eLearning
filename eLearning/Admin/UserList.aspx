@@ -48,7 +48,14 @@
                  <asp:TextBox ID="txtRole" runat="server" Text='<%# Bind("role") %>' />
              </EditItemTemplate>
          </asp:TemplateField>
-
+          <asp:TemplateField HeaderText="Status">
+             <ItemTemplate>
+                 <%# Eval("stat") %>
+             </ItemTemplate>
+             <EditItemTemplate>
+                 <asp:TextBox ID="txtstat" runat="server" Text='<%# Bind("stat") %>' />
+             </EditItemTemplate>
+         </asp:TemplateField>
          <asp:CommandField ShowEditButton="True" ShowDeleteButton="True" />
      </Columns>
  </asp:GridView>

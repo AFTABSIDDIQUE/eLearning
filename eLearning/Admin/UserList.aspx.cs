@@ -56,7 +56,9 @@ namespace eLearning.Admin
             string userEmail = ((TextBox)row.FindControl("txtUserEmail")).Text;
             string userContact = ((TextBox)row.FindControl("txtUserContact")).Text;
             string role = ((TextBox)row.FindControl("txtRole")).Text;
-            string q = $"exec UpdateUserData '{userId}','{userName}','{userEmail}','{userContact}'";
+            string stat = ((TextBox)row.FindControl("txtstat")).Text;
+
+            string q = $"exec UpdateUserData '{userId}','{userName}','{userEmail}','{userContact}','{stat}'";
             SqlCommand cmd = new SqlCommand(q, conn);
 
             cmd.ExecuteNonQuery();
