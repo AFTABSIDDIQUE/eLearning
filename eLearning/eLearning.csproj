@@ -78,6 +78,8 @@
     <Content Include="Admin\AdminDashboard.aspx" />
     <Content Include="Admin\AdminHome.aspx" />
     <Content Include="Admin\Master Course List\CourseList.aspx" />
+    <Content Include="Admin\Master Course List\CreatedAssignmentList.aspx" />
+    <Content Include="Admin\Master Course List\CreatedMCQList.aspx" />
     <Content Include="Admin\Master Course List\SubCourseList.aspx" />
     <Content Include="Admin\Master Course List\TopicList.aspx" />
     <Content Include="Admin\Master Course\AddNewCourse.aspx" />
@@ -143,6 +145,20 @@
     </Compile>
     <Compile Include="Admin\Master Course List\CourseList.aspx.designer.cs">
       <DependentUpon>CourseList.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Admin\Master Course List\CreatedAssignmentList.aspx.cs">
+      <DependentUpon>CreatedAssignmentList.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Admin\Master Course List\CreatedAssignmentList.aspx.designer.cs">
+      <DependentUpon>CreatedAssignmentList.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Admin\Master Course List\CreatedMCQList.aspx.cs">
+      <DependentUpon>CreatedMCQList.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Admin\Master Course List\CreatedMCQList.aspx.designer.cs">
+      <DependentUpon>CreatedMCQList.aspx</DependentUpon>
     </Compile>
     <Compile Include="Admin\Master Course List\SubCourseList.aspx.cs">
       <DependentUpon>SubCourseList.aspx</DependentUpon>
