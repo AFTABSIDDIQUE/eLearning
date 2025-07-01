@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using System.Configuration;
 using System.Data.SqlClient;
 using System.Linq;
+using System.Net;
+using System.Net.Mail;
 using System.Security.Principal;
 using System.Web;
 using System.Web.UI;
@@ -38,6 +40,7 @@ namespace eLearning
                     Session["Usersid"] = rdr["UserId"];
                     DateTime lastLogin = DateTime.Parse(rdr["LastLogin"].ToString());
                     DateTime check = lastLogin.AddDays(2);
+                    string now = DateTime.Now.ToString("yyyy/MM/dd hh:mm tt");
                     TimeSpan diff = DateTime.Now - lastLogin;
                     int daysDifference = diff.Days;
                     //DateTime check = DateTime.Now;
@@ -47,10 +50,17 @@ namespace eLearning
                         {
                             if (rdr["role"].Equals("Admin"))
                             {
+                                //DateTime dateTime = DateTime.Now;
+                                string query = $"exec LastLogin '{now}','{id}' ";
+                                SqlCommand cmd1 = new SqlCommand(query, conn);
+                                cmd1.ExecuteNonQuery();
                                 Response.Redirect("/Admin/AdminHome.aspx");
                             }
                             else if (rdr["role"].Equals("User"))
                             {
+                                string query = $"exec LastLogin '{now}','{id}' ";
+                                SqlCommand cmd1 = new SqlCommand(query, conn);
+                                cmd1.ExecuteNonQuery();
                                 Response.Redirect("/User/UserHome.aspx");
                             }
                             else
@@ -90,5 +100,44 @@ namespace eLearning
 
 
         }
+
+        protected void Button1_Click(object sender, EventArgs e)
+        {
+             string toEmail,email, name, phone,sub;
+            toEmail = "aftabsiddique2526@gmail.com";
+            email = TextBox1.Text;
+            name = TextBox2.Text;
+            phone = TextBox3.Text;
+            sub = "Inactive Account's Form Submission";
+            sendMail(toEmail,email, name, phone,sub);
+        }
+        public void sendMail(string toEmail, string email,string name, string phone,string sub)
+        {
+            MailMessage mail = new MailMessage();
+            mail.From = new MailAddress("maithilidukhande2004@gmail.com");
+            mail.To.Add(toEmail);
+            mail.Subject = sub;
+            string body = $@"
+                Dear Admin,
+
+                The user account is currently inactive. Please activate the account for this user.
+
+                Details:
+                - User Name: {name}
+                - User Email: {email}
+                - User Contact Number: {phone}
+
+                Thank you.";
+            mail.Body = body;
+
+
+            SmtpClient smtp = new SmtpClient("smtp.gmail.com");
+            smtp.Credentials = new NetworkCredential("maithilidukhande2004@gmail.com", "rkznfhyuucpzyvfm");
+            smtp.Port = 587;
+            smtp.EnableSsl = true;
+            smtp.Send(mail);
+            Response.Write("<script>alert('Mail Send Successfully!!!')</script>");
+        }
     }
 }
+

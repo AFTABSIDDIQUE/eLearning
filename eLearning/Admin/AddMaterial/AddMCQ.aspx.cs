@@ -115,6 +115,7 @@ namespace eLearning.Admin.AddMaterial
                 string q = $"exec InsertMCQ '{question}','{optionA}','{optionB}','{optionC}','{optionD}','{answer}',{courseId} ,{subCourseId},{topicId},'{CreatedBy}'";
                 SqlCommand cmd = new SqlCommand(q, conn);
                 cmd.ExecuteNonQuery();
+                Response.Write("<script>alert('MCQ Saved Fro the course');</script>");
             }
 
             Hfcount.Value = "0";

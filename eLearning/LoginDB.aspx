@@ -50,9 +50,49 @@
                                     <label class="form-label" for="txtLoginPassword">Password</label>
                                 </div>
 
+
                                <div class="text-end mb-4">
                                         <asp:Button ID="btnLogin" runat="server" Text="Sign in" CssClass="btn btn-primary" OnClick="btnLogin_Click" />
+                               </div>
+
+                               <div class="text-end mb-4">
+                                        <!-- Button trigger modal -->
+                                <button type="button" class="btn btn-secondary" data-bs-toggle="modal" data-bs-target="#exampleModalCenter">
+                                  InActive User
+                                </button>
+
+                                <!-- Modal -->
+                                <div class="modal fade" id="exampleModalCenter" tabindex="-1" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+                                  <div class="modal-dialog modal-dialog-centered">
+                                    <div class="modal-content">
+                                      <div class="modal-header">
+                                        <h5 class="modal-title" id="exampleModalCenterTitle">Inactive Account Details</h5>
+                                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                      </div>
+                                      <div class="modal-body text-center">
+                                        <div class="mb-3">
+                                          <label class="form-label">Email:</label>
+                                          <asp:TextBox ID="TextBox1" runat="server" CssClass="form-control w-75 mx-auto"></asp:TextBox>
+                                        </div>
+                                        <div class="mb-3">
+                                          <label class="form-label">User Name:</label>
+                                          <asp:TextBox ID="TextBox2" runat="server" CssClass="form-control w-75 mx-auto"></asp:TextBox>
+                                        </div>
+                                        <div class="mb-3">
+                                          <label class="form-label">Mobile No.:</label>
+                                          <asp:TextBox ID="TextBox3" runat="server" CssClass="form-control w-75 mx-auto"></asp:TextBox>
+                                        </div>
+                                      </div>
+                                      <div class="modal-footer justify-content-center">
+                                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                                                  <asp:Button ID="Button1" class="btn btn-primary" runat="server" Text="Submit" OnClick="Button1_Click" />
+                                      </div>
                                     </div>
+                                  </div>
+                                </div>
+
+
+                               </div>
 
                             </div>
 
@@ -80,6 +120,7 @@
                                     <asp:TextBox ID="txtRegPassword" runat="server" CssClass="form-control" TextMode="Password" placeholder="Password" />
                                     <label class="form-label" for="txtRegPassword">Password</label>
                                 </div>
+
 
                                 <div class="text-end mb-4">
                                      <asp:Button ID="btnRegister" runat="server" Text="Register" CssClass="btn btn-primary btn-block mb-3" OnClick="btnRegister_Click" />

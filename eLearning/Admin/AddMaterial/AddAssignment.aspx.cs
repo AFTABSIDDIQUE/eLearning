@@ -86,6 +86,7 @@ namespace eLearning.Admin.AddMaterial
             string q = $"exec InsertAssignment '{AssignmentPath}',{courseId} ,{subCourseId},{topicId},'{CreatedBy}'";
             SqlCommand cmd = new SqlCommand(q, conn);
             cmd.ExecuteNonQuery();
+            Response.Write("<script>alert('Assingment Uploaded Successfully');</script>");
 
         }
 
