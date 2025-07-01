@@ -74,12 +74,13 @@
     <Content Include="Admin\AddMaterial\AddMCQ.aspx" />
     <Content Include="Admin\AdminDashboard.aspx" />
     <Content Include="Admin\AdminHome.aspx" />
-    <Content Include="Admin\Master Course List\CourseList.aspx" />
-    <Content Include="Admin\Master Course List\SubCourseList.aspx" />
-    <Content Include="Admin\Master Course List\TopicList.aspx" />
-    <Content Include="Admin\Master Course\AddNewCourse.aspx" />
-    <Content Include="Admin\Master Course\AddSubcourse.aspx" />
-    <Content Include="Admin\Master Course\AddTopic.aspx" />
+    <Content Include="Admin\MasterCourseList\CourseList.aspx" />
+    <Content Include="Admin\MasterCourseList\SubCourseList.aspx" />
+    <Content Include="Admin\MasterCourseList\TopicList.aspx" />
+    <Content Include="Admin\MasterCourse\AddNewCourse.aspx" />
+    <Content Include="Admin\MasterCourse\AddSubcourse.aspx" />
+    <Content Include="Admin\MasterCourse\AddTopic.aspx" />
+    <Content Include="Admin\Review\UserReview.aspx" />
     <Content Include="Admin\UserList.aspx" />
     <Content Include="LoginDB.aspx" />
     <Content Include="User\CoursesList\Checkout.aspx" />
@@ -88,6 +89,8 @@
     <Content Include="User\UserDashboard.aspx" />
     <Content Include="User\UserHome.aspx" />
     <Content Include="User\UserProfile.aspx" />
+    <Content Include="User\VideoPanel\VideoPanel.aspx" />
+    <Content Include="User\VideoPanel\WebForm1.aspx" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
@@ -126,47 +129,54 @@
     <Compile Include="Admin\AdminHome.aspx.designer.cs">
       <DependentUpon>AdminHome.aspx</DependentUpon>
     </Compile>
-    <Compile Include="Admin\Master Course List\CourseList.aspx.cs">
+    <Compile Include="Admin\MasterCourseList\CourseList.aspx.cs">
       <DependentUpon>CourseList.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="Admin\Master Course List\CourseList.aspx.designer.cs">
+    <Compile Include="Admin\MasterCourseList\CourseList.aspx.designer.cs">
       <DependentUpon>CourseList.aspx</DependentUpon>
     </Compile>
-    <Compile Include="Admin\Master Course List\SubCourseList.aspx.cs">
+    <Compile Include="Admin\MasterCourseList\SubCourseList.aspx.cs">
       <DependentUpon>SubCourseList.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="Admin\Master Course List\SubCourseList.aspx.designer.cs">
+    <Compile Include="Admin\MasterCourseList\SubCourseList.aspx.designer.cs">
       <DependentUpon>SubCourseList.aspx</DependentUpon>
     </Compile>
-    <Compile Include="Admin\Master Course List\TopicList.aspx.cs">
+    <Compile Include="Admin\MasterCourseList\TopicList.aspx.cs">
       <DependentUpon>TopicList.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="Admin\Master Course List\TopicList.aspx.designer.cs">
+    <Compile Include="Admin\MasterCourseList\TopicList.aspx.designer.cs">
       <DependentUpon>TopicList.aspx</DependentUpon>
     </Compile>
-    <Compile Include="Admin\Master Course\AddNewCourse.aspx.cs">
+    <Compile Include="Admin\MasterCourse\AddNewCourse.aspx.cs">
       <DependentUpon>AddNewCourse.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="Admin\Master Course\AddNewCourse.aspx.designer.cs">
+    <Compile Include="Admin\MasterCourse\AddNewCourse.aspx.designer.cs">
       <DependentUpon>AddNewCourse.aspx</DependentUpon>
     </Compile>
-    <Compile Include="Admin\Master Course\AddSubcourse.aspx.cs">
+    <Compile Include="Admin\MasterCourse\AddSubcourse.aspx.cs">
       <DependentUpon>AddSubcourse.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="Admin\Master Course\AddSubcourse.aspx.designer.cs">
+    <Compile Include="Admin\MasterCourse\AddSubcourse.aspx.designer.cs">
       <DependentUpon>AddSubcourse.aspx</DependentUpon>
     </Compile>
-    <Compile Include="Admin\Master Course\AddTopic.aspx.cs">
+    <Compile Include="Admin\MasterCourse\AddTopic.aspx.cs">
       <DependentUpon>AddTopic.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="Admin\Master Course\AddTopic.aspx.designer.cs">
+    <Compile Include="Admin\MasterCourse\AddTopic.aspx.designer.cs">
       <DependentUpon>AddTopic.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Admin\Review\UserReview.aspx.cs">
+      <DependentUpon>UserReview.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Admin\Review\UserReview.aspx.designer.cs">
+      <DependentUpon>UserReview.aspx</DependentUpon>
     </Compile>
     <Compile Include="Admin\UserList.aspx.cs">
       <DependentUpon>UserList.aspx</DependentUpon>
@@ -231,6 +241,20 @@
     </Compile>
     <Compile Include="User\UserProfile.aspx.designer.cs">
       <DependentUpon>UserProfile.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="User\VideoPanel\VideoPanel.aspx.cs">
+      <DependentUpon>VideoPanel.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="User\VideoPanel\VideoPanel.aspx.designer.cs">
+      <DependentUpon>VideoPanel.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="User\VideoPanel\WebForm1.aspx.cs">
+      <DependentUpon>WebForm1.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="User\VideoPanel\WebForm1.aspx.designer.cs">
+      <DependentUpon>WebForm1.aspx</DependentUpon>
     </Compile>
   </ItemGroup>
   <ItemGroup>

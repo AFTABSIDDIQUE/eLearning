@@ -2,17 +2,17 @@
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
-   <div>
+<div>
        Course Name&nbsp;&nbsp;
-      <asp:DropDownList ID="DropDownList1" runat="server"></asp:DropDownList>
+      <asp:DropDownList ID="DropDownList1" runat="server" AutoPostBack="true" OnSelectedIndexChanged="DropDownList1_SelectedIndexChanged" ></asp:DropDownList>
       <br />
       <br /> 
        SubCourse Name
-      <asp:DropDownList ID="DropDownList2" runat="server"></asp:DropDownList>
+      <asp:DropDownList ID="DropDownList2" runat="server" AutoPostBack="true" OnSelectedIndexChanged="DropDownList2_SelectedIndexChanged" ></asp:DropDownList>
       <br />
       <br />
        Topic&nbsp;&nbsp;&nbsp;&nbsp;
-      <asp:DropDownList ID="DropDownList3" runat="server"></asp:DropDownList><br /><br />
+      <asp:DropDownList ID="DropDownList3" runat="server" AutoPostBack="true"></asp:DropDownList><br /><br />
       <asp:Button ID="btnAddMore" runat="server" Text="Add MCQ" OnClick="btnmcq_Click" /><br /><br />
       <asp:Repeater ID="Repeater1" runat="server" Visible="false">
           <ItemTemplate>
@@ -32,5 +32,5 @@
       
       <asp:Button ID="btnSave" runat="server" Text="Save" OnClick="btnsave_Click" />
 
-  </div>                      
+  </div>                                
 </asp:Content>

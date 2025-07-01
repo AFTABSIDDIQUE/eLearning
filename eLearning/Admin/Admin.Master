@@ -8,7 +8,7 @@
     </asp:ContentPlaceHolder></title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-LN+7fdVzj6u52u30Kp6M/trliBMCMKTyK833zpbD+pXdCLuTusPj697FH4R/5mcr" crossorigin="anonymous">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/js/bootstrap.bundle.min.js" integrity="sha384-ndDqU0Gzau9qJ1lfW4pNLlhNTkCfHzAVBReH9diLvGRem5+R9g2FzA8ZGN954O5Q" crossorigin="anonymous"></script>
-
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" />
 
 </head>
 <body>
@@ -24,24 +24,33 @@
 
                     <div class="collapse navbar-collapse" id="navbarNavDropdown">
                         <ul class="navbar-nav">
-                            <li class="nav-item">
-                                <a class="nav-link active" aria-current="page" href="#">
-                                    Home <asp:Label ID="Label1" runat="server" Text="Label"></asp:Label> </a>
-                                   <div class="collapse" id="userDropdown">
-                                    <ul class="list-unstyled ps-3">
-                                        <li>
-                                            <a class="nav-link"><asp:Button ID="Button1" CssClass="dropdown-item" runat="server" Text="Logout" OnClick="Button1_Click" /></a>
+
+                            <!-- Users -->
+                            <li class="nav-item dropdown">
+                                <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                    Hello <asp:Label ID="Label1" runat="server" Text="Label"></asp:Label> </a>
+                              
+                                 <ul class="dropdown-menu">
+                                     <li> <a class="nav-link"><asp:Button ID="Button1" CssClass="dropdown-item" runat="server" Text="Logout" OnClick="Button1_Click" /></a>
                                         </li>
-                                    </ul>
-                                </div>
+                                </ul>
+
                             </li>
 
-                            <li class="nav-item">
-                                <a class="nav-link" href="#">Features</a>
+                            <!-- Master Course -->
+                            <li class="nav-item dropdown">
+                                <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                    MasterCourse
+                                </a>
+                              
+                                 <ul class="dropdown-menu">
+                                      <li><a class="dropdown-item" href="/Admin/MasterCourse/AddNewCourse.aspx">Course</a></li>
+                                      <li><a class="dropdown-item" href="/Admin/MasterCourse/AddSubCourse.aspx">SubCourse</a></li>
+                                     <li><a class="dropdown-item" href="/Admin/MasterCourse/AddTopic.aspx">Topic</a></li>
+                                </ul>
+
                             </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="#">Pricing</a>
-                            </li>
+                           <!-- Material -->
                             <li class="nav-item dropdown">
                                 <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                                     Material
@@ -50,6 +59,19 @@
                                  <ul class="dropdown-menu">
                                       <li><a class="dropdown-item" href="/Admin/AddMaterial/AddAssignment.aspx">Add Assignment</a></li>
                                       <li><a class="dropdown-item" href="/Admin/AddMaterial/AddMCQ.aspx">Add MCQ</a></li>
+                                </ul>
+
+                            </li>
+                            <!-- Master CourseList -->
+                            <li class="nav-item dropdown">
+                                <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                    MasterCourse List
+                                </a>
+                              
+                                 <ul class="dropdown-menu">
+                                      <li><a class="dropdown-item" href="/Admin/MasterCourseList/CourseList.aspx">Course</a></li>
+                                      <li><a class="dropdown-item" href="/Admin/MasterCourseList/SubCourseList.aspx">SubCourse</a></li>
+                                     <li><a class="dropdown-item" href="/Admin/MasterCourseList/TopicList.aspx">Topic</a></li>
                                 </ul>
 
                             </li>

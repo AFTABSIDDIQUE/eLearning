@@ -15,12 +15,16 @@ namespace eLearning.Admin.AddMaterial
             string strcon = ConfigurationManager.ConnectionStrings["dbconn"].ConnectionString;
             conn = new SqlConnection(strcon);
             conn.Open();
-           
+
             if (!IsPostBack)
             {
                 fetchCouses();
-                fetSubCourse();
-                fetTopic();
+                DropDownList2.Items.Clear();
+                DropDownList2.Items.Insert(0, new ListItem("Select SubCourse", ""));
+
+                DropDownList3.Items.Clear();
+                DropDownList3.Items.Insert(0, new ListItem("Select Topic", ""));
+
                 Hfcount.Value = "0";
                 Repeater1.Visible = false;
                 BindRepeater();
@@ -40,27 +44,27 @@ namespace eLearning.Admin.AddMaterial
             DropDownList1.Items.Insert(0, new ListItem("Select Course", ""));
 
         }
-        public void fetSubCourse()
+        public void fetSubCourse(int CourseId)
         {
-            SqlCommand cmd = new SqlCommand($"exec fetchSubCourse", conn);
+            SqlCommand cmd = new SqlCommand($"exec fetchSubCourse {CourseId}", conn);
             SqlDataReader rdr = cmd.ExecuteReader();
             DropDownList2.DataSource = rdr;
             DropDownList2.DataTextField = "SubCourseName";
             DropDownList2.DataValueField = "SubCourseID";
             DropDownList2.DataBind();
             rdr.Close();
-            DropDownList2.Items.Insert(0, new ListItem("Select SubCourse", ""));
+
         }
-        public void fetTopic()
+        public void fetTopic(int SubCourseId)
         {
-            SqlCommand cmd = new SqlCommand($"exec fetchTopic", conn);
+            SqlCommand cmd = new SqlCommand($"exec fetchTopic '{SubCourseId}'", conn);
             SqlDataReader rdr = cmd.ExecuteReader();
             DropDownList3.DataSource = rdr;
             DropDownList3.DataTextField = "TopicName";
             DropDownList3.DataValueField = "TopicID";
             DropDownList3.DataBind();
             rdr.Close();
-            DropDownList3.Items.Insert(0, new ListItem("Select Topic", ""));
+
         }
 
         public void BindRepeater()
@@ -84,7 +88,7 @@ namespace eLearning.Admin.AddMaterial
             Hfcount.Value = (int.Parse(Hfcount.Value) + 1).ToString();
             BindRepeater();
         }
-        
+
         protected void btnsave_Click(object sender, EventArgs e)
         {
             int courseId = int.Parse(DropDownList1.SelectedValue);
@@ -120,6 +124,39 @@ namespace eLearning.Admin.AddMaterial
             DropDownList2.SelectedIndex = 0;
             DropDownList3.SelectedIndex = 0;
             Repeater1.DataBind();
+        }
+
+        protected void DropDownList1_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (DropDownList1.SelectedValue != "")
+            {
+                int CourseId = int.Parse(DropDownList1.SelectedValue);
+                fetSubCourse(CourseId);
+            }
+            else
+            {
+                DropDownList2.Items.Clear();
+                DropDownList2.Items.Insert(0, new ListItem("Select SubCourse", ""));
+            }
+
+
+            DropDownList3.Items.Clear();
+            DropDownList3.Items.Insert(0, new ListItem("Select Topic", ""));
+        }
+
+
+        protected void DropDownList2_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (DropDownList2.SelectedValue != "")
+            {
+                int SubCourseId = int.Parse(DropDownList2.SelectedValue);
+                fetTopic(SubCourseId);
+            }
+            else
+            {
+                DropDownList3.Items.Clear();
+                DropDownList3.Items.Insert(0, new ListItem("Select Topic", ""));
+            }
         }
     }
 }

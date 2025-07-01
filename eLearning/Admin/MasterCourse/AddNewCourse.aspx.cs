@@ -13,6 +13,7 @@ namespace eLearning.Admin.Master_Course
     public partial class AddNewCourse : System.Web.UI.Page
     {
         SqlConnection conn;
+        
         protected void Page_Load(object sender, EventArgs e)
         {
             string cs = ConfigurationManager.ConnectionStrings["dbconn"].ConnectionString;
@@ -26,6 +27,7 @@ namespace eLearning.Admin.Master_Course
 
         protected void Button1_Click(object sender, EventArgs e)
         {
+            string createdBy = Session["name"].ToString();
             string CourseName, CoursePic, CourseStatus;
 
 
@@ -34,7 +36,7 @@ namespace eLearning.Admin.Master_Course
             FileUpload1.SaveAs(Server.MapPath("/Images") + Path.GetFileName(FileUpload1.FileName));
             CoursePic = "/Images" + Path.GetFileName(FileUpload1.FileName);
 
-            string q = $"exec AddCourse '{CourseName}', '{CoursePic}','{CourseStatus}'";
+            string q = $"exec AddCourse '{CourseName}', '{CoursePic}','{CourseStatus}','{createdBy}'";
             SqlCommand cmd = new SqlCommand(q, conn);
             cmd.ExecuteNonQuery();
 

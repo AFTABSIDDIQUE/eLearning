@@ -34,13 +34,14 @@ namespace eLearning
                     int id = int.Parse(rdr["userId"].ToString());
                     Session["Users"] = em;
                     Session["email"] = rdr["UserEmail"];
+                    Session["name"] = rdr["UserName"];
                     Session["Usersid"] = rdr["UserId"];
                     DateTime lastLogin = DateTime.Parse(rdr["LastLogin"].ToString());
                     DateTime check = lastLogin.AddDays(2);
                     TimeSpan diff = DateTime.Now - lastLogin;
                     int daysDifference = diff.Days;
                     //DateTime check = DateTime.Now;
-                    if (daysDifference <= 2)
+                    if (daysDifference < 2)
                     {
                         if ((rdr["UserEmail"].Equals(em) || rdr["UserName"].Equals(em)) && rdr["UserPassword"].Equals(pass))
                         {

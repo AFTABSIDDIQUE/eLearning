@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Configuration;
 using System.Data.SqlClient;
+using System.IO;
 using System.Linq;
 using System.Web;
 using System.Web.UI;
@@ -9,45 +10,44 @@ using System.Web.UI.WebControls;
 
 namespace eLearning.Admin.Master_Course
 {
-    public partial class AddTopic : System.Web.UI.Page
+    public partial class AddSubcourse : System.Web.UI.Page
     {
         SqlConnection conn;
+
         protected void Page_Load(object sender, EventArgs e)
         {
             string cs = ConfigurationManager.ConnectionStrings["dbconn"].ConnectionString;
             conn = new SqlConnection(cs);
             conn.Open();
+
             if (!IsPostBack)
             {
-
                 CourseNameDD();
-                SubCourseDD();
             }
+
         }
+
         protected void Button1_Click(object sender, EventArgs e)
         {
-            string TopicName, TopicUrl, TopicStatus;
-
-            TopicName = TextBox1.Text;
-            TopicUrl = TextBox2.Text;
-            TopicStatus = DropDownList3.SelectedValue;
+            string createdBy = Session["name"].ToString();
+            string SubCourseName, SubCoursePic, SubStatus;
+            decimal SubCoursePrice;
             int CourseID = int.Parse(Course.SelectedValue);
-            int SubCourseID = int.Parse(SubCourse.SelectedValue);
-
-            string q = $"exec AddTopicName '{TopicName}', '{TopicUrl}', '{TopicStatus}','{CourseID}','{SubCourseID}'";
+            FileUpload1.SaveAs(Server.MapPath("/Images") + Path.GetFileName(FileUpload1.FileName));
+            SubCoursePic = "/Images" + Path.GetFileName(FileUpload1.FileName);
+            SubCourseName = TextBox1.Text;
+            SubCoursePrice = int.Parse(TextBox2.Text);
+            SubStatus = DropDownList1.SelectedValue;
+            string q = $"exec AddSubCourse '{SubCourseName}','{SubCoursePic}','{SubCoursePrice}','{SubStatus}','{CourseID}','{createdBy}'";
             SqlCommand cmd = new SqlCommand(q, conn);
             cmd.ExecuteNonQuery();
 
-            Response.Write("<script>alert('Topic Added Successfully');</script>");
+            Response.Write("<script>alert('Sub Course Added Successfully');</script>");
+
             ResetTemp();
-        }
-        private void ResetTemp()
-        {
-            TextBox1.Text = "";
-            TextBox2.Text = "";
 
         }
-        public void CourseNameDD()
+        private void CourseNameDD()
         {
             string q = "exec GetCoursename";
             SqlCommand cmd = new SqlCommand(q, conn);
@@ -58,28 +58,18 @@ namespace eLearning.Admin.Master_Course
             Course.DataTextField = "CourseName";
             Course.DataValueField = "CourseID";
             Course.DataBind();
-            rdr.Close();
-
-
 
         }
 
-        public void SubCourseDD()
+
+
+
+        private void ResetTemp()
         {
-
-
-            string q = "exec GetSubCourseName";
-            SqlCommand cmd = new SqlCommand(q, conn);
-
-            SqlDataReader rdr = cmd.ExecuteReader();
-
-            SubCourse.DataSource = rdr;
-            SubCourse.DataTextField = "SubCourseName";
-            SubCourse.DataValueField = "SubCourseID";
-            SubCourse.DataBind();
+            TextBox1.Text = "";
+            TextBox2.Text = "";
 
         }
-
 
     }
 }

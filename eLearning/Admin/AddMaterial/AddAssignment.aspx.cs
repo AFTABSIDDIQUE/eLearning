@@ -21,8 +21,11 @@ namespace eLearning.Admin.AddMaterial
             if (!IsPostBack)
             {
                 fetchCouses();
-                fetSubCourse();
-                fetTopic();
+                DropDownList2.Items.Clear();
+                DropDownList2.Items.Insert(0, new ListItem("Select SubCourse", ""));
+
+                DropDownList3.Items.Clear();
+                DropDownList3.Items.Insert(0, new ListItem("Select Topic", ""));
 
             }
         }
@@ -39,27 +42,25 @@ namespace eLearning.Admin.AddMaterial
             DropDownList1.Items.Insert(0, new ListItem("Select Course", ""));
 
         }
-        public void fetSubCourse()
+        public void fetSubCourse(int CourseId)
         {
-            SqlCommand cmd = new SqlCommand($"exec fetchSubCourse", conn);
+            SqlCommand cmd = new SqlCommand($"exec fetchSubCourse '{CourseId}' ", conn);
             SqlDataReader rdr = cmd.ExecuteReader();
             DropDownList2.DataSource = rdr;
             DropDownList2.DataTextField = "SubCourseName";
             DropDownList2.DataValueField = "SubCourseID";
             DropDownList2.DataBind();
             rdr.Close();
-            DropDownList2.Items.Insert(0, new ListItem("Select SubCourse", ""));
+
         }
-        public void fetTopic()
+        public void fetTopic(int SubCourseId)
         {
-            SqlCommand cmd = new SqlCommand($"exec fetchTopic", conn);
+            SqlCommand cmd = new SqlCommand($"exec fetchTopic '{SubCourseId}'", conn);
             SqlDataReader rdr = cmd.ExecuteReader();
             DropDownList3.DataSource = rdr;
             DropDownList3.DataTextField = "TopicName";
             DropDownList3.DataValueField = "TopicID";
             DropDownList3.DataBind();
-            rdr.Close();
-            DropDownList3.Items.Insert(0, new ListItem("Select Topic", ""));
         }
 
 
@@ -87,6 +88,40 @@ namespace eLearning.Admin.AddMaterial
             cmd.ExecuteNonQuery();
 
         }
+
+        protected void DropDownList1_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (DropDownList1.SelectedValue != "")
+            {
+                int CourseId = int.Parse(DropDownList1.SelectedValue);
+                fetSubCourse(CourseId);
+            }
+            else
+            {
+                DropDownList2.Items.Clear();
+                DropDownList2.Items.Insert(0, new ListItem("Select SubCourse", ""));
+            }
+
+
+            DropDownList3.Items.Clear();
+            DropDownList3.Items.Insert(0, new ListItem("Select Topic", ""));
+        }
+
+
+        protected void DropDownList2_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (DropDownList2.SelectedValue != "")
+            {
+                int SubCourseId = int.Parse(DropDownList2.SelectedValue);
+                fetTopic(SubCourseId);
+            }
+            else
+            {
+                DropDownList3.Items.Clear();
+                DropDownList3.Items.Insert(0, new ListItem("Select Topic", ""));
+            }
+        }
+
 
     }
 }

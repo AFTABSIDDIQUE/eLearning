@@ -8,11 +8,11 @@
     <br />
     Course Name
     <br />
-    <asp:DropDownList ID="Course" runat="server">
+    <asp:DropDownList ID="Course" runat="server" AutoPostBack="True" OnSelectedIndexChanged="Course_SelectedIndexChanged">
     </asp:DropDownList>
     <br />
     SubCourse Name<br />
-    <asp:DropDownList ID="SubCourse" runat="server">
+    <asp:DropDownList ID="SubCourse" runat="server" OnSelectedIndexChanged="SubCourse_SelectedIndexChanged" AutoPostBack="True">
     </asp:DropDownList>
     <br />
     Topic Name<br />
@@ -29,5 +29,6 @@
     <br />
     <br />
     <asp:Button ID="Button1" runat="server" Text="Add Topic" OnClick="Button1_Click" />
-</div>
+&nbsp;&nbsp;
+        </div>
 </asp:Content>

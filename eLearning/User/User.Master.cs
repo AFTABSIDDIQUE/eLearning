@@ -11,7 +11,7 @@ namespace eLearning.User
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            Label1.Text = Session["Users"].ToString();
+            //Label1.Text = Session["Users"].ToString();
         }
 
         protected void Button1_Click(object sender, EventArgs e)
