@@ -85,9 +85,13 @@
     <Content Include="Admin\Master Course\AddTopic.aspx" />
     <Content Include="Admin\MasterSubscription\AddSubscription.aspx" />
     <Content Include="Admin\MasterSubscription\SubscriptionType.aspx" />
+    <Content Include="Admin\TransactionHistory.aspx" />
     <Content Include="Admin\UserList.aspx" />
     <Content Include="LoginDB.aspx" />
     <Content Include="User\CoursesList\Checkout.aspx" />
+    <Content Include="User\CoursesList\Invoice.aspx" />
+    <Content Include="User\CoursesList\Invoice1.aspx" />
+    <Content Include="User\CoursesList\MyCourses.aspx" />
     <Content Include="User\CoursesList\ViewCart.aspx" />
     <Content Include="User\CoursesList\ViewCoursesList.aspx" />
     <Content Include="User\SubscriptionList\SubscriptionList.aspx" />
@@ -189,6 +193,13 @@
     <Compile Include="Admin\MasterSubscription\SubscriptionType.aspx.designer.cs">
       <DependentUpon>SubscriptionType.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Admin\TransactionHistory.aspx.cs">
+      <DependentUpon>TransactionHistory.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Admin\TransactionHistory.aspx.designer.cs">
+      <DependentUpon>TransactionHistory.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Admin\UserList.aspx.cs">
       <DependentUpon>UserList.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -210,6 +221,27 @@
     </Compile>
     <Compile Include="User\CoursesList\Checkout.aspx.designer.cs">
       <DependentUpon>Checkout.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="User\CoursesList\Invoice.aspx.cs">
+      <DependentUpon>Invoice.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="User\CoursesList\Invoice.aspx.designer.cs">
+      <DependentUpon>Invoice.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="User\CoursesList\Invoice1.aspx.cs">
+      <DependentUpon>Invoice1.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="User\CoursesList\Invoice1.aspx.designer.cs">
+      <DependentUpon>Invoice1.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="User\CoursesList\MyCourses.aspx.cs">
+      <DependentUpon>MyCourses.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="User\CoursesList\MyCourses.aspx.designer.cs">
+      <DependentUpon>MyCourses.aspx</DependentUpon>
     </Compile>
     <Compile Include="User\CoursesList\ViewCart.aspx.cs">
       <DependentUpon>ViewCart.aspx</DependentUpon>

@@ -51,7 +51,12 @@ namespace eLearning.User.SubscriptionList
                     decimal subscriptionPrice = decimal.Parse(values[1].ToString());
                     string subCourses = values[2];
 
+                    
                     int userId = 1;
+                    Session["UserID"] = userId;
+                    Session["SubscriptionType"] = subscriptionTypeName;
+                    Session["Price"] = subscriptionPrice;
+
                     InsertIntoSubscriptionCart(userId, subscriptionTypeName, subscriptionPrice, subCourses);
                     StartPayment(subscriptionPrice);
                 }
