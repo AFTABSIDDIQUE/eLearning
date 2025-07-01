@@ -81,23 +81,28 @@ namespace eLearning.User.VideoPanel
             TextBox1.Text = "";
             DropDownList2.ClearSelection();
         }
-        
+
         protected void Button1_Click(object sender, EventArgs e)
         {
-
             string filePath = null;
             string fileName = null;
-            int topicId = int.Parse(hdnSelectedTopicID.Value.ToString());
-            string q = $"SELECT * FROM Assignment WHERE TopicID = '{topicId}'";
-            SqlCommand cmd = new SqlCommand(q, conn);
-            cmd.Parameters.AddWithValue("@id", topicId);
-            SqlDataReader rdr = cmd.ExecuteReader();
-            if (rdr.Read())
-            {
-                filePath = rdr["AssignmentFile"].ToString();
-                fileName = rdr["AssignmentID"].ToString();
-            }
 
+            int topicId = int.Parse(hdnSelectedTopicID.Value);
+
+            string q = "SELECT * FROM Assignment WHERE TopicID = @id";
+            using (SqlCommand cmd = new SqlCommand(q, conn))
+            {
+                cmd.Parameters.AddWithValue("@id", topicId);
+                //conn.Open();
+                using (SqlDataReader rdr = cmd.ExecuteReader())
+                {
+                    if (rdr.Read())
+                    {
+                        filePath = rdr["AssignmentFile"].ToString();
+                    }
+                }
+                conn.Close();
+            }
 
             if (!string.IsNullOrEmpty(filePath))
             {
@@ -105,22 +110,24 @@ namespace eLearning.User.VideoPanel
 
                 if (File.Exists(absolutePath))
                 {
-                    Response.ContentType = "application/pdf";
-                    Response.AppendHeader("Content-Disposition", $"attachment; filename={fileName}");
+                    string downloadName = Path.GetFileName(filePath);
+                    Response.Clear();
+                    Response.ContentType = "application/octet-stream";
+                    Response.AppendHeader("Content-Disposition", $"attachment; filename={downloadName}");
                     Response.TransmitFile(absolutePath);
                     Response.End();
                 }
                 else
                 {
-
-                    Response.Write("<script>alert('File not found on server {fileId}');</script>");
+                    Response.Write($"<script>alert('File not found on server: {filePath}');</script>");
                 }
             }
             else
             {
-                Response.Write("<script>alert('No file path found in database ');</script>");
+                Response.Write("<script>alert('No file path found in database');</script>");
             }
         }
+
 
 
         private void BindMCQs()
@@ -166,7 +173,7 @@ namespace eLearning.User.VideoPanel
                 {
                     string correctAnswer = "";
 
-                        conn.Open();
+                        //conn.Open();
                         string query = "SELECT Answer FROM MCQ WHERE MCQID = @MCQID";
                         SqlCommand cmd = new SqlCommand(query, conn);
                         cmd.Parameters.AddWithValue("@MCQID", mcqID);
